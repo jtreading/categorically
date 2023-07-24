@@ -1,0 +1,52 @@
+﻿@page "/AddUser"
+@using Categorically.Data
+@inject UserService userService
+@inject NavigationManager NavigationManager
+
+<h2>Add User</h2>
+<hr />
+
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="UserName" class="control-label">UserName</label>
+                <input form="UserName" class="form-control" @bind="@obj.UserName" />
+            </div>
+            <div class="form-group">
+                <label for="FirstName" class="control-label">First Name</label>
+                <input form="FirstName" class="form-control" @bind="@obj.FirstName" />
+            </div>
+            <div class="form-group">
+                <label for="LastName" class="control-label">Last Name</label>
+                <input form="LastName" class="form-control" @bind="@obj.LastName" />
+            </div>
+            <div class="form-group">
+                <label for="Email" class="control-label">Email</label>
+                <input form="Email" class="form-control" @bind="@obj.Email" />
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" class="btn btn-primary" @onclick="@CreateUser" value="Save" />
+                <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@code {
+    User obj = new User();
+    protected async void CreateUser()
+    {
+        await userService.InsertUserAsync(obj);
+        NavigationManager.NavigateTo("Users");
+    }
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("Users");
+    }
+}

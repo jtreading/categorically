@@ -1,0 +1,59 @@
+﻿@page "/AddCategory"
+@using Categorically.Data
+@inject CategoryService categoryService
+@inject UserService userService
+@inject NavigationManager NavigationManager
+
+<h2>Add Category</h2>
+<hr />
+
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="CategoryName" class="control-label">Category Name</label>
+                <input form="CategoryName" class="form-control" @bind="@category.CategoryName" />
+            </div>
+            <div class="form-group">
+                <label for="UserId" class="control-label">User</label>
+                <select form="UserId" class="form-control" @bind="@category.UserId">
+                    <option value="">Select user</option>
+                    @foreach (var user in Users)
+                    {
+                        <option value="@user.UserId">@user.UserName</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" class="btn btn-primary" @onclick="@CreateCategory" value="Save" />
+                <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@code {
+    Category category = new Category();
+    List<User> Users = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Users = await userService.GetAllUsersAsync();
+    }
+
+    protected async Task CreateCategory()
+    {
+        await categoryService.InsertCategoryAsync(category);
+        NavigationManager.NavigateTo("Categories");
+    }
+
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("Categories");
+    }
+}

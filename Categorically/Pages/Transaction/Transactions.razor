@@ -1,0 +1,92 @@
+﻿@page "/Transactions"
+@using Categorically.Data
+@inject TransactionService transactionService
+@inject UserService userService
+
+<NavLink class="nav-link" href="AddTransaction">
+    <span class="oi oi-plus" aria-hidden="true">Add New</span>
+</NavLink>
+
+<h1>Transaction List</h1>
+
+<div class="row mb-3">
+    <div class="col-md-4">
+        <label for="startDate">Start Date:</label>
+        <input type="date" class="form-control" @bind="startDate" id="startDate" />
+    </div>
+    <div class="col-md-4">
+        <label for="endDate">End Date:</label>
+        <input type="date" class="form-control" @bind="endDate" id="endDate" />
+    </div>
+    <div class="col-md-4">
+        <label for="userFilter">User:</label>
+        <select class="form-control" @bind="selectedUserId" id="userFilter">
+            <option value="">All Users</option>
+            @foreach (var user in userList)
+            {
+                <option value="@user.UserId">@user.UserName</option>
+            }
+        </select>
+    </div>
+</div>
+
+@if (transactionList is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>TransactionId</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>UserName</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in transactionList)
+            {
+                <tr>
+                    <td>@transaction.TransactionId</td>
+                    <td>@transaction.Amount</td>
+                    <td>@transaction.TransactionDate.ToShortDateString()</td>
+                    <td>@transaction.User.UserName</td>
+                    <td>
+                        <a class="nav-link" href="EditTransaction/@transaction.TransactionId">
+                            <span class="oi oi-pencil" aria-hidden="true">Edit</span>
+                        </a>
+                        <a class="nav-link" href="DeleteTransaction/@transaction.TransactionId">
+                            <span class="oi oi-trash" aria-hidden="true">Delete</span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<Transaction> transactionList = new();
+    List<User> userList = new();
+    DateTime startDate = new();
+    DateTime endDate = new();
+    int? selectedUserId;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var today = DateTime.Today;
+        startDate = new DateTime(today.Year, today.Month, 1);
+        endDate = new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
+
+        transactionList = await transactionService.GetTransactionsByUserAndTimeframeAsync(selectedUserId, startDate, endDate);
+        userList = await userService.GetAllUsersAsync();
+    }
+
+    protected async Task FilterTransactions()
+    {
+        transactionList = await transactionService.GetTransactionsByUserAndTimeframeAsync(selectedUserId, startDate, endDate);
+    }
+}

@@ -1,0 +1,53 @@
+﻿@page "/Categories"
+@using Categorically.Data
+@inject CategoryService categoryService
+
+<NavLink class="nav-link" href="AddCategory">
+    <span class="oi oi-plus" aria-hidden="true">Add New</span>
+</NavLink>
+
+<h1>Category List</h1>
+@if (CategoryList is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>CategoryId</th>
+                <th>CategoryName</th>
+                <th>UserName</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var category in CategoryList)
+            {
+                <tr>
+                    <td>@category.CategoryId</td>
+                    <td>@category.CategoryName</td>
+                    <td>@category.User.UserName</td>
+                    <td>
+                        <a class="nav-link" href="EditCategory/@category.CategoryId">
+                            <span class="oi oi-pencil" aria-hidden="true">Edit</span>
+                        </a>
+                        <a class="nav-link" href="DeleteCategory/@category.CategoryId">
+                            <span class="oi oi-trash" aria-hidden="true">Delete</span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    List<Category> CategoryList;
+
+    protected override async Task OnInitializedAsync()
+    {
+        CategoryList = await Task.Run(() => categoryService.GetAllCategoriesAsync());
+    }
+}
