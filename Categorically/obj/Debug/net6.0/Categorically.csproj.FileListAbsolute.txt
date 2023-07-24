@@ -88,3 +88,4 @@ C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\Categor
 C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\Categorically.genruntimeconfig.cache
 C:\Users\jonat\source\repos\Categorically\Categorically\bin\Debug\net6.0\Categorically.pdb
 C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\ref\Categorically.dll
+C:\Users\jonat\source\repos\Categorically\Categorically\bin\Debug\net6.0\Bogus.dll

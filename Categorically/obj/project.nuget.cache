@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "aYq03dVbz4nDtWsInOL2YPQJ9XxIU1+j6X1owpjEkqDmeT/vbScYBW4MT6RTrpPDPajcL/XpJVN3jcXBMMlUBg==",
+  "dgSpecHash": "VXqmOCQfEXBPUWVA+kI4J1x+kMwUtnBbcdjqdPZ5Kma9IXizADH48aTafIgxMC9WjNC6VovVJcTxSG/2RHSkMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\Categorically.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jonat\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
+    "C:\\Users\\jonat\\.nuget\\packages\\bogus\\34.0.2\\bogus.34.0.2.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\castle.core\\5.1.0\\castle.core.5.1.0.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\jonat\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
