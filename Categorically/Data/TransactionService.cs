@@ -46,7 +46,7 @@ namespace Categorically.Data
         {
             var query = _appDBContext.Transactions.Include(t => t.User).Where(t => t.TransactionDate >= start && t.TransactionDate <= end);
 
-            if (userId.HasValue)
+            if (userId.HasValue && userId.Value != 0)
             {
                 query = query.Where(t => t.UserId == userId);
             }
