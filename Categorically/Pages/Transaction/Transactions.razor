@@ -1,36 +1,13 @@
 ﻿@page "/Transactions"
 @using Categorically.Data
 @inject TransactionService transactionService
-@inject UserService userService
 
 <NavLink class="nav-link" href="AddTransaction">
     <span class="oi oi-plus" aria-hidden="true">Add New</span>
 </NavLink>
 
 <h1>Transaction List</h1>
-
-<div class="row mb-3">
-    <div class="col-md-4">
-        <label for="startDate">Start Date:</label>
-        <input type="date" class="form-control" @bind="startDate" id="startDate" />
-    </div>
-    <div class="col-md-4">
-        <label for="endDate">End Date:</label>
-        <input type="date" class="form-control" @bind="endDate" id="endDate" />
-    </div>
-    <div class="col-md-4">
-        <label for="userFilter">User:</label>
-        <select class="form-control" @bind="selectedUserId" id="userFilter">
-            <option value="">All Users</option>
-            @foreach (var user in userList)
-            {
-                <option value="@user.UserId">@user.UserName</option>
-            }
-        </select>
-    </div>
-</div>
-
-@if (transactionList is null)
+@if (TransactionList is null)
 {
     <p><em>Loading...</em></p>
 }
@@ -39,20 +16,24 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>TransactionId</th>
+                <th>Transaction Date</th>
                 <th>Amount</th>
-                <th>Date</th>
-                <th>UserName</th>
+                <th>Charged By Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>User</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var transaction in transactionList)
+            @foreach (var transaction in TransactionList)
             {
                 <tr>
-                    <td>@transaction.TransactionId</td>
-                    <td>@transaction.Amount</td>
                     <td>@transaction.TransactionDate.ToShortDateString()</td>
+                    <td>@transaction.Amount</td>
+                    <td>@transaction.ChargedByName</td>
+                    <td>@transaction.Description</td>
+                    <td>@transaction.Category?.CategoryName</td>
                     <td>@transaction.User.UserName</td>
                     <td>
                         <a class="nav-link" href="EditTransaction/@transaction.TransactionId">
@@ -69,24 +50,10 @@ else
 }
 
 @code {
-    List<Transaction> transactionList = new();
-    List<User> userList = new();
-    DateTime startDate = new();
-    DateTime endDate = new();
-    int? selectedUserId;
+    List<Transaction> TransactionList;
 
     protected override async Task OnInitializedAsync()
     {
-        var today = DateTime.Today;
-        startDate = new DateTime(today.Year, today.Month, 1);
-        endDate = new DateTime(today.Year, today.Month, DateTime.DaysInMonth(today.Year, today.Month));
-
-        transactionList = await transactionService.GetTransactionsByUserAndTimeframeAsync(selectedUserId, startDate, endDate);
-        userList = await userService.GetAllUsersAsync();
-    }
-
-    protected async Task FilterTransactions()
-    {
-        transactionList = await transactionService.GetTransactionsByUserAndTimeframeAsync(selectedUserId, startDate, endDate);
+        TransactionList = await transactionService.GetAllTransactionsAsync();
     }
 }

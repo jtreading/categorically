@@ -1,0 +1,95 @@
+﻿@page "/EditTransaction/{TransactionId:int}"
+@using Categorically.Data
+@inject TransactionService transactionService
+@inject CategoryService categoryService
+@inject UserService userService
+@inject NavigationManager NavigationManager
+
+<h2>Edit Transaction</h2>
+<hr />
+
+@if (Transaction is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <form>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label for="TransactionDate" class="control-label">Transaction Date</label>
+                    <input form="TransactionDate" type="date" class="form-control" @bind="@Transaction.TransactionDate" />
+                </div>
+                <div class="form-group">
+                    <label for="Amount" class="control-label">Amount</label>
+                    <input form="Amount" type="number" step="0.01" class="form-control" @bind="@Transaction.Amount" />
+                </div>
+                <div class="form-group">
+                    <label for="ChargedByName" class="control-label">Charged By Name</label>
+                    <input form="ChargedByName" class="form-control" @bind="@Transaction.ChargedByName" />
+                </div>
+                <div class="form-group">
+                    <label for="Description" class="control-label">Description</label>
+                    <input form="Description" class="form-control" @bind="@Transaction.Description" />
+                </div>
+                <div class="form-group">
+                    <label for="CategoryId" class="control-label">Category</label>
+                    <select form="CategoryId" class="form-control" @bind="@Transaction.CategoryId">
+                        <option value="">Select category</option>
+                        @foreach (var category in Categories)
+                        {
+                            <option value="@category.CategoryId">@category.CategoryName</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="UserId" class="control-label">User</label>
+                    <select form="UserId" class="form-control" @bind="@Transaction.UserId">
+                        <option value="">Select user</option>
+                        @foreach (var user in Users)
+                        {
+                            <option value="@user.UserId">@user.UserName</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input type="button" class="btn btn-primary" @onclick="@UpdateTransaction" value="Update" />
+                    <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
+                </div>
+            </div>
+        </div>
+    </form>
+}
+
+@code {
+    Transaction Transaction;
+    List<Category> Categories = new List<Category>();
+    List<User> Users = new List<User>();
+
+    [Parameter]
+    public int TransactionId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Transaction = await transactionService.GetTransactionAsync(TransactionId);
+        Categories = await categoryService.GetAllCategoriesAsync();
+        Users = await userService.GetAllUsersAsync();
+    }
+
+    protected async Task UpdateTransaction()
+    {
+        await transactionService.UpdateTransactionAsync(Transaction);
+        NavigationManager.NavigateTo("Transactions");
+    }
+
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("Transactions");
+    }
+}
