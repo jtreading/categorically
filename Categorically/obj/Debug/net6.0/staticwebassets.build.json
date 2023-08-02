@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4s1AKR5LB3fwviVE4y1drhFi7LbxKS2rj27U4/XD6cg=",
+  "Hash": "bwe/d7d51zni7qZd67ZxzfriRJeddeqzAOVzCVYOBsY=",
   "Source": "Categorically",
   "BasePath": "_content/Categorically",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Categorically\\wwwroot",
       "Source": "Categorically",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Categorically.styles.css",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Categorically.styles.css",
       "SourceId": "Categorically",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "Categorically.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Categorically.styles.css"
+      "OriginalItemSpec": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\bundle\\Categorically.styles.css"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Categorically.bundle.scp.css",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Categorically.bundle.scp.css",
       "SourceId": "Categorically",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "Categorically.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Categorically.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Categorically.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/open-iconic/FONT-LICENSE",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\css\\site.css",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\favicon.ico",
       "SourceId": "Categorically",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\wwwroot\\",
       "BasePath": "_content/Categorically",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",

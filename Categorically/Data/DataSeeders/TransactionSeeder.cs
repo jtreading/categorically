@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Bogus;
+﻿using Bogus;
 using Categorically.Data;
 
 namespace Categorically.DataSeeders;
