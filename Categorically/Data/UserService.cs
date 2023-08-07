@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Categorically.Data.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Categorically.Data
 {
-    public class UserService
+    public class UserService : IUserService
     {
         #region Property
         private readonly AppDBContext _appDBContext;
@@ -27,14 +28,14 @@ namespace Categorically.Data
         {
             await _appDBContext.Users.AddAsync(User);
             await _appDBContext.SaveChangesAsync();
-            return true;
+            return true; // why bool
         }
         #endregion
 
         #region Get User by Id
         public async Task<User> GetUserAsync(int UserId)
         {
-            User User = await _appDBContext.Users.FirstOrDefaultAsync(c => c.UserId.Equals(UserId));
+            User User = await _appDBContext.Users.FindAsync(UserId); // <- cool, read up on nullables
             return User;
         }
         #endregion

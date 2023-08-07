@@ -1,6 +1,7 @@
 using Categorically.Data;
 using Categorically.DataSeeders;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,27 +12,34 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<TransactionService>();
 
-var Demo = false; // SETS DEMO MODE
+var Demo = true; // SETS DEMO MODE
 
+string myConn = "mydemoconn";
+
+#if DEBUG // build configuration
+myConn = "myconn";
+#elif DEMO
+myConn = "mydemoconn";
+#endif
+
+//[Conditional("DEBUG")]
+//static void SeedDatabase()
+//{
+//    myConnString = "asdf";
+//}
+
+
+// different dbcontext for sqlite? different connstring? usewhat?
 #region Connection String
-if (Demo)
-{
-    var configuration = builder.Configuration;
-    builder.Services.AddDbContext<AppDBContext>(options =>
-        options.UseLazyLoadingProxies().UseSqlServer(configuration.GetConnectionString("mydemoconn")));
-}
-else
-{
-    var configuration = builder.Configuration;
-    builder.Services.AddDbContext<AppDBContext>(options =>
-        options.UseLazyLoadingProxies().UseSqlServer(configuration.GetConnectionString("myconn")));
-}
+var configuration = builder.Configuration;
+builder.Services.AddDbContext<AppDBContext>(options =>
+    options.UseLazyLoadingProxies().UseSqlServer(configuration.GetConnectionString(myConn)));
 #endregion
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (!app.Environment.IsDevelopment()) //showing or not showing errors to user
 {
     app.UseExceptionHandler("/Error");
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
