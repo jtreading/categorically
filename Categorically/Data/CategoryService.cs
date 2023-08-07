@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Categorically.DataAccess;
+using Categorically.Services.Models;
 
 namespace Categorically.Data
 {

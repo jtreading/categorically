@@ -1227,6 +1227,31 @@
             "rid": "win"
           }
         }
+      },
+      "Categorically.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Categorically.Services": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.9",
+          "Microsoft.EntityFrameworkCore.SqlServer": "7.0.9"
+        },
+        "compile": {
+          "bin/placeholder/Categorically.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Categorically.DataAccess.dll": {}
+        }
+      },
+      "Categorically.Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Categorically.Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Categorically.Services.dll": {}
+        }
       }
     }
   },
@@ -3660,11 +3685,23 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Categorically.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../Categorically.DataAccess/Categorically.DataAccess.csproj",
+      "msbuildProject": "../Categorically.DataAccess/Categorically.DataAccess.csproj"
+    },
+    "Categorically.Services/1.0.0": {
+      "type": "project",
+      "path": "../Categorically.Services/Categorically.Services.csproj",
+      "msbuildProject": "../Categorically.Services/Categorically.Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Bogus >= 34.0.2",
+      "Categorically.DataAccess >= 1.0.0",
+      "Categorically.Services >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 7.0.9",
       "Microsoft.EntityFrameworkCore.Proxies >= 7.0.9",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.9",
@@ -3672,24 +3709,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jreading\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\jonat\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\Categorically.csproj",
-      "projectName": "Categorically",
-      "projectPath": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\Categorically.csproj",
-      "packagesPath": "C:\\Users\\jreading\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jreading\\Documents\\repos\\categorically\\Categorically\\obj\\",
+      "projectUniqueName": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\Categorically.Web.csproj",
+      "projectName": "Categorically.Web",
+      "projectPath": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\Categorically.Web.csproj",
+      "packagesPath": "C:\\Users\\jonat\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\jreading\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\jonat\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3697,14 +3729,20 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically.DataAccess\\Categorically.DataAccess.csproj": {
+              "projectPath": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically.DataAccess\\Categorically.DataAccess.csproj"
+            },
+            "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically.Services\\Categorically.Services.csproj": {
+              "projectPath": "C:\\Users\\jonat\\source\\repos\\Categorically\\Categorically.Services\\Categorically.Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -3759,7 +3797,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }

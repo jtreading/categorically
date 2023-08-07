@@ -1,0 +1,8 @@
+C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\Categorically.Web.csproj.AssemblyReference.cache
+C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\Categorically.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\Categorically.Web.AssemblyInfoInputs.cache
+C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\Categorically.Web.AssemblyInfo.cs
+C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\Categorically.Web.csproj.CoreCompileInputs.cache
+C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\Categorically.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\Categorically.Web.RazorAssemblyInfo.cache
+C:\Users\jonat\source\repos\Categorically\Categorically\obj\Debug\net6.0\Categorically.Web.RazorAssemblyInfo.cs

@@ -9,89 +9,89 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Categorically
 build_property.RootNamespace = Categorically
-build_property.ProjectDir = C:\Users\jreading\Documents\repos\categorically\Categorically\
+build_property.ProjectDir = C:\Users\jonat\source\repos\Categorically\Categorically\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\jreading\Documents\repos\categorically\Categorically
+build_property.MSBuildProjectDirectory = C:\Users\jonat\source\repos\Categorically\Categorically
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/App.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/Category/AddCategory.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/Category/AddCategory.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlcQWRkQ2F0ZWdvcnkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/Category/Categories.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/Category/Categories.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlcQ2F0ZWdvcmllcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/Category/DeleteCategory.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/Category/DeleteCategory.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlcRGVsZXRlQ2F0ZWdvcnkucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/Category/EditCategory.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/Category/EditCategory.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlcRWRpdENhdGVnb3J5LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/Index.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/Transaction/AddTransaction.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/Transaction/AddTransaction.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cQWRkVHJhbnNhY3Rpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/Transaction/DeleteTransaction.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/Transaction/DeleteTransaction.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cRGVsZXRlVHJhbnNhY3Rpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/Transaction/EditTransaction.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/Transaction/EditTransaction.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cRWRpdFRyYW5zYWN0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/Transaction/Transactions.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/Transaction/Transactions.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cVHJhbnNhY3Rpb25zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/User/AddUser.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/User/AddUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxBZGRVc2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/User/DeleteUser.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/User/DeleteUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxEZWxldGVVc2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/User/EditUser.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/User/EditUser.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxFZGl0VXNlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/User/Users.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/User/Users.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXNlclxVc2Vycy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/_Imports.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Shared/MainLayout.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-16kt6ezy19
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Shared/NavMenu.razor]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-9ii37urjy6
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/Error.cshtml]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/_Host.cshtml]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/jreading/Documents/repos/categorically/Categorically/Pages/_Layout.cshtml]
+[C:/Users/jonat/source/repos/Categorically/Categorically/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
