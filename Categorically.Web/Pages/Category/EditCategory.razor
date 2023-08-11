@@ -1,0 +1,66 @@
+﻿@page "/EditCategory/{CategoryId}"
+@using Categorically.Data
+@using Categorically.Services.Models
+@inject CategoryService categoryService
+@inject UserService userService
+@inject NavigationManager NavigationManager
+
+<h2>Edit Category</h2>
+<hr />
+
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="CategoryId" class="control-label">Category ID</label>
+                <input disabled form="CategoryId" class="form-control" @bind="@category.CategoryId" />
+            </div>
+            <div class="form-group">
+                <label for="CategoryName" class="control-label">Category Name</label>
+                <input form="CategoryName" class="form-control" @bind="@category.CategoryName" />
+            </div>
+            <div class="form-group">
+                <label for="UserId" class="control-label">User</label>
+                <select form="UserId" class="form-control" @bind="@category.UserId">
+                    @foreach (var user in Users)
+                    {
+                        <option value="@user.UserId">@user.UserName</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" class="btn btn-primary" @onclick="@UpdateCategory" value="Update" />
+                <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@code {
+    [Parameter]
+    public string CategoryId { get; set; }
+    Category category = new Category();
+    List<User> Users = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        category = await Task.Run(() => categoryService.GetCategoryAsync(Convert.ToInt32(CategoryId)));
+        Users = await userService.GetAllUsersAsync();
+    }
+
+    protected async Task UpdateCategory()
+    {
+        await categoryService.UpdateCategoryAsync(category);
+        NavigationManager.NavigateTo("Categories");
+    }
+
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("Categories");
+    }
+}
