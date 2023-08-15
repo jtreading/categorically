@@ -1,0 +1,11 @@
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\bin\Debug\net6.0\Categorically.Test.deps.json
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\bin\Debug\net6.0\Categorically.Test.dll
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\bin\Debug\net6.0\Categorically.Test.pdb
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\obj\Debug\net6.0\Categorically.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\obj\Debug\net6.0\Categorically.Test.AssemblyInfoInputs.cache
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\obj\Debug\net6.0\Categorically.Test.AssemblyInfo.cs
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\obj\Debug\net6.0\Categorically.Test.csproj.CoreCompileInputs.cache
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\obj\Debug\net6.0\Categorically.Test.dll
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\obj\Debug\net6.0\refint\Categorically.Test.dll
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\obj\Debug\net6.0\Categorically.Test.pdb
+C:\Users\jonat\source\repos\Categorically\Categorically.Test\obj\Debug\net6.0\ref\Categorically.Test.dll

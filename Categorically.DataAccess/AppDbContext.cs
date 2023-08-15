@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Categorically.Services.Models;
+using Categorically.DataAccess.Models;
 
 namespace Categorically.DataAccess;
 

@@ -1,4 +1,4 @@
-using Categorically.Data;
+using Categorically.Services;
 using Categorically.DataAccess;
 using Categorically.DataSeeders;
 using Microsoft.EntityFrameworkCore;

@@ -737,7 +737,6 @@
       },
       "Categorically.DataAccess/1.0.0": {
         "dependencies": {
-          "Categorically.Services": "1.0.0",
           "Microsoft.EntityFrameworkCore": "7.0.10",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.10"
         },
@@ -746,6 +745,11 @@
         }
       },
       "Categorically.Services/1.0.0": {
+        "dependencies": {
+          "Bogus": "34.0.2",
+          "Categorically.DataAccess": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.10"
+        },
         "runtime": {
           "Categorically.Services.dll": {}
         }
