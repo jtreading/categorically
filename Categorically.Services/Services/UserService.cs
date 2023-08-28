@@ -11,8 +11,6 @@ public class UserService : IUserService
     private readonly AppDBContext _appDBContext;
     #endregion
 
-    //test
-
     #region Constructor
     public UserService(AppDBContext appDBContext)
     {
