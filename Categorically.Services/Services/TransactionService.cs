@@ -1,10 +1,11 @@
 ﻿using Categorically.DataAccess;
 using Categorically.DataAccess.Models;
+using Categorically.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Categorically.Services;
 
-public class TransactionService
+public class TransactionService : ITransactionService
 {
     private readonly AppDBContext _appDBContext;
 

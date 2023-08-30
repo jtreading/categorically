@@ -1,9 +1,10 @@
-using Categorically.Services;
 using Categorically.DataAccess;
-using Categorically.DataSeeders;
+using Categorically.Services;
+using Categorically.Tasks.Tasks;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseWebRoot("wwwroot").UseStaticWebAssets();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -11,11 +12,10 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<TransactionService>();
+builder.Services.AddScoped<TransactionTasks>();
 
-var myConn = "mydemoconn";
-#if DEBUG
-myConn = "mydemoconn";
-#elif DEMO
+var myConn = "mytestconn";
+#if DEMO
 myConn = "myconn";
 #endif
 
@@ -43,6 +43,7 @@ app.UseRouting();
 
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
+
 
 #if DEBUG // SEED DATABASE
 using var scope = app.Services.CreateScope();

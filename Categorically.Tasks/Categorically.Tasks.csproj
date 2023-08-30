@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Tasks\" />
+    <ProjectReference Include="..\Categorically.DataAccess\Categorically.DataAccess.csproj" />
+    <ProjectReference Include="..\Categorically.Services\Categorically.Services.csproj" />
   </ItemGroup>
 
 </Project>

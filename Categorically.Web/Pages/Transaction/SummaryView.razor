@@ -1,18 +1,20 @@
 ﻿@page "/summary"
+@using Categorically.DataAccess.Models;
+@using Categorically.Tasks.Tasks;
 @using Radzen
 @using Radzen.Blazor
 
 <h3>SummaryView</h3>
 
 <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-lg-6 offset-lg-3 my-5">
-            <RadzenCard class="w-100 mb-4" >
+    <div class="row">
+        <div class="col-sm-12 col-lg-6 offset-lg-3 my-5">
+            <RadzenCard class="w-100 mb-4">
                 <RadzenCheckBox @bind-Value="@showDataLabels" Name="dataLabels"></RadzenCheckBox>
                 <RadzenLabel Text="Show Data Labels" For="dataLabels" Style="margin-left: 8px; vertical-align: middle;" />
             </RadzenCard>
             <RadzenChart SeriesClick=@OnSeriesClick>
-                <RadzenPieSeries Data="@revenue" Title="Revenue" CategoryProperty="Quarter" ValueProperty="Revenue">
+                <RadzenPieSeries Data="@summaryData" Title="Summary" CategoryProperty="CategoryName" ValueProperty="Amount">
                     <RadzenSeriesDataLabels Visible="@showDataLabels" />
                 </RadzenPieSeries>
             </RadzenChart>
@@ -21,6 +23,9 @@
 </div>
 
 @code {
+    [Inject]
+    private TransactionTasks _transactionTasks { get; set; }
+
     bool showDataLabels = false;
 
     void OnSeriesClick(SeriesClickEventArgs args)
@@ -28,32 +33,15 @@
         Console.WriteLine("POTATO");
     }
 
-    class DataItem
-    {
-        public string Quarter { get; set; }
-        public double Revenue { get; set; }
-    }
+    List<SummaryItem> summaryData = new List<SummaryItem>();
 
-    DataItem[] revenue = new DataItem[] {
-        new DataItem
-        {
-            Quarter = "Q1",
-            Revenue = 30000
-        },
-        new DataItem
-        {
-            Quarter = "Q2",
-            Revenue = 40000
-        },
-        new DataItem
-        {
-            Quarter = "Q3",
-            Revenue = 50000
-        },
-        new DataItem
-        {
-            Quarter = "Q4",
-            Revenue = 80000
-        },
-    };
+    // override for blazor oninitializedasync
+    protected override async Task OnInitializedAsync()
+    {
+        DateTime startDate = new DateTime(2023, 1, 1);
+        DateTime endDate = new DateTime(2023, 12, 31);
+        int userId = 1;
+
+        summaryData = await _transactionTasks.GetSummaryItemsAsync(userId, startDate, endDate);
+    }
 }

@@ -1,5 +1,6 @@
-﻿namespace Categorically.Services.Interfaces;
-using Categorically.DataAccess.Models;
+﻿using Categorically.DataAccess.Models;
+
+namespace Categorically.Services.Interfaces;
 
 public interface IUserService
 {

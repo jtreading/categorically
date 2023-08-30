@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Categorically.DataAccess\Categorically.DataAccess.csproj" />
     <ProjectReference Include="..\Categorically.Services\Categorically.Services.csproj" />
+    <ProjectReference Include="..\Categorically.Tasks\Categorically.Tasks.csproj" />
   </ItemGroup>
 
   <ItemGroup>
