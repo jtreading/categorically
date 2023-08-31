@@ -1,21 +1,66 @@
 ﻿@page "/summary"
 @using Categorically.DataAccess.Models;
+@using Categorically.Services;
 @using Categorically.Tasks.Tasks;
 @using Radzen
 @using Radzen.Blazor
+@inject UserService userService
 
 <h3>SummaryView</h3>
 
-<div class="container">
+<style>
+    /* Apply consistent font */
+    .consistent-font {
+        font-family: Arial, sans-serif;
+    }
+
+    /* Adjust button style */
+    .styled-button {
+        vertical-align: middle;
+        height: 38px;
+    }
+
+    /* Adjust chart size */
+    .larger-chart {
+        width: 75%;
+        margin: auto;
+    }
+</style>
+
+<div class="container consistent-font">
+    <RadzenStack Orientation="Orientation.Horizontal" HorizontalAlign="HorizontalAlignment.Center" class="mb-3">
+        <RadzenDropDown @bind-Value="@selectedUserId" Data="@Users" TextProperty="UserName" ValueProperty="UserId">
+            <Label>User:</Label>
+        </RadzenDropDown>
+
+        <RadzenDatePicker @bind-Value="@startDate">
+            <Label>Start Date:</Label>
+        </RadzenDatePicker>
+
+        <RadzenDatePicker @bind-Value="@endDate">
+            <Label>End Date:</Label>
+        </RadzenDatePicker>
+        <div class="ml-auto">
+            <RadzenButton ButtonStyle="ButtonStyle.Primary" Click="@UpdateTransactionList">
+                <span class="oi oi-loop"></span>
+                Update
+            </RadzenButton>
+            <a href="addtransaction">
+                <RadzenButton ButtonStyle="ButtonStyle.Secondary">
+
+                    <span class="oi oi-plus"></span>
+                    Add Transaction
+
+                </RadzenButton>
+            </a>
+        </div>
+    </RadzenStack>
+
     <div class="row">
-        <div class="col-sm-12 col-lg-6 offset-lg-3 my-5">
-            <RadzenCard class="w-100 mb-4">
-                <RadzenCheckBox @bind-Value="@showDataLabels" Name="dataLabels"></RadzenCheckBox>
-                <RadzenLabel Text="Show Data Labels" For="dataLabels" Style="margin-left: 8px; vertical-align: middle;" />
-            </RadzenCard>
-            <RadzenChart SeriesClick=@OnSeriesClick>
+        <div class="col-sm-12 col-lg-8 offset-lg-2 my-5">
+            <RadzenChart class="larger-chart">
                 <RadzenPieSeries Data="@summaryData" Title="Summary" CategoryProperty="CategoryName" ValueProperty="Amount">
-                    <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                    <RadzenSeriesDataLabels Visible="true" />
                 </RadzenPieSeries>
             </RadzenChart>
         </div>
@@ -26,22 +71,21 @@
     [Inject]
     private TransactionTasks _transactionTasks { get; set; }
 
-    bool showDataLabels = false;
+    DateTime startDate = new DateTime(2023, 6, 1);
+    DateTime endDate = new DateTime(2023, 6, 30);
+    int selectedUserId;
 
-    void OnSeriesClick(SeriesClickEventArgs args)
-    {
-        Console.WriteLine("POTATO");
-    }
-
+    List<User> Users = new List<User>();
     List<SummaryItem> summaryData = new List<SummaryItem>();
 
-    // override for blazor oninitializedasync
+    async Task UpdateTransactionList()
+    {
+        Users = await userService.GetAllUsersAsync();
+        summaryData = await _transactionTasks.GetSummaryItemsAsync(selectedUserId, startDate, endDate);
+    }
+
     protected override async Task OnInitializedAsync()
     {
-        DateTime startDate = new DateTime(2023, 1, 1);
-        DateTime endDate = new DateTime(2023, 12, 31);
-        int userId = 1;
-
-        summaryData = await _transactionTasks.GetSummaryItemsAsync(userId, startDate, endDate);
+        await UpdateTransactionList();
     }
 }
