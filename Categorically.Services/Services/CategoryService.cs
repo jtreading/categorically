@@ -1,60 +1,86 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Categorically.DataAccess;
+﻿using Categorically.DataAccess;
 using Categorically.DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Categorically.Services;
 
-public class CategoryService
+public class CategoryService : ICategoryService
 {
-    #region Properties
     private readonly AppDBContext _appDBContext;
-    #endregion
+    private readonly ILogger<CategoryService> _logger;
 
-    #region Constructor
-    public CategoryService(AppDBContext appDBContext)
+    public CategoryService(AppDBContext appDBContext, ILogger<CategoryService> logger)
     {
         _appDBContext = appDBContext;
+        _logger = logger;
     }
-    #endregion
 
-    #region Get List of Categories
     public async Task<List<Category>> GetAllCategoriesAsync()
     {
-        return await _appDBContext.Categories.Include(c => c.User).ToListAsync();
+        try
+        {
+            return await _appDBContext.Categories.Include(c => c.User).ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while fetching all categories.");
+            throw;
+        }
     }
-    #endregion
 
-    #region Insert Category
-    public async Task<bool> InsertCategoryAsync(Category category)
+    public async void InsertCategoryAsync(Category category)
     {
-        await _appDBContext.Categories.AddAsync(category);
-        await _appDBContext.SaveChangesAsync();
-        return true;
+        try
+        {
+            await _appDBContext.Categories.AddAsync(category);
+            await _appDBContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while inserting a category.");
+            throw;
+        }
     }
-    #endregion
 
-    #region Get Category by Id
-    public async Task<Category> GetCategoryAsync(int categoryId)
+    public async Task<Category?> GetCategoryAsync(int categoryId)
     {
-        return await _appDBContext.Categories.Include(c => c.User).FirstOrDefaultAsync(c => c.CategoryId == categoryId);
+        try
+        {
+            return await _appDBContext.Categories.Include(c => c.User).FirstOrDefaultAsync(c => c.CategoryId == categoryId);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Error occurred while fetching category with ID {categoryId}.");
+            throw;
+        }
     }
-    #endregion
 
-    #region Update Category
-    public async Task<bool> UpdateCategoryAsync(Category category)
+    public async void UpdateCategoryAsync(Category category)
     {
-        _appDBContext.Categories.Update(category);
-        await _appDBContext.SaveChangesAsync();
-        return true;
+        try
+        {
+            _appDBContext.Categories.Update(category);
+            await _appDBContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Error occurred while updating category with ID {category.CategoryId}.");
+            throw;
+        }
     }
-    #endregion
 
-    #region Delete Category
-    public async Task<bool> DeleteCategoryAsync(Category category)
+    public async void DeleteCategoryAsync(Category category)
     {
-        _appDBContext.Categories.Remove(category);
-        await _appDBContext.SaveChangesAsync();
-        return true;
+        try
+        {
+            _appDBContext.Categories.Remove(category);
+            await _appDBContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Error occurred while deleting category with ID {category.CategoryId}.");
+            throw;
+        }
     }
-    #endregion
 }

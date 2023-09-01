@@ -1,25 +1,35 @@
 using Categorically.DataAccess;
-using Categorically.Services;
-using Categorically.Tasks.Tasks;
+using Categorically.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Radzen;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseWebRoot("wwwroot").UseStaticWebAssets();
 
-// Add services to the container.
+#region Dependency Injection
+// SERVICES
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddScoped<UserService>();
-builder.Services.AddScoped<CategoryService>();
-builder.Services.AddScoped<TransactionService>();
-builder.Services.AddScoped<TransactionTasks>();
 
+// TASKS
+builder.Services.AddScoped<ITransactionTasks, TransactionTasks>();
+builder.Services.AddScoped<ICategoryTasks, CategoryTasks>();
+builder.Services.AddScoped<IUserTasks, UserTasks>();
+
+// RADZEN
+builder.Services.AddScoped<DialogService>();
+builder.Services.AddScoped<NotificationService>();
+builder.Services.AddScoped<TooltipService>();
+builder.Services.AddScoped<ContextMenuService>();
+#endregion
+
+#region Connection String
 var myConn = "mytestconn";
 #if DEMO
 myConn = "myconn";
 #endif
 
-#region Connection String
 var configuration = builder.Configuration;
 builder.Services.AddDbContext<AppDBContext>(options =>
     options.UseLazyLoadingProxies().UseSqlServer(configuration.GetConnectionString(myConn)));
@@ -36,14 +46,10 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
-
 
 #if DEBUG // SEED DATABASE
 using var scope = app.Services.CreateScope();

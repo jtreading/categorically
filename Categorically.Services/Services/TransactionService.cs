@@ -1,59 +1,106 @@
 ﻿using Categorically.DataAccess;
 using Categorically.DataAccess.Models;
-using Categorically.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Categorically.Services;
 
 public class TransactionService : ITransactionService
 {
     private readonly AppDBContext _appDBContext;
+    private readonly ILogger<TransactionService> _logger;
 
-    public TransactionService(AppDBContext appDBContext)
+    public TransactionService(AppDBContext appDBContext, ILogger<TransactionService> logger)
     {
         _appDBContext = appDBContext;
+        _logger = logger;
     }
 
     public async Task<List<Transaction>> GetAllTransactionsAsync()
     {
-        return await _appDBContext.Transactions.Include(t => t.User).ToListAsync();
+        try
+        {
+            return await _appDBContext.Transactions.Include(t => t.User).ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while fetching all transactions.");
+            throw;
+        }
     }
 
-    public async Task<bool> InsertTransactionAsync(Transaction transaction)
+    public async void InsertTransactionAsync(Transaction transaction)
     {
-        await _appDBContext.Transactions.AddAsync(transaction);
-        await _appDBContext.SaveChangesAsync();
-        return true;
+        try
+        {
+            await _appDBContext.Transactions.AddAsync(transaction);
+            await _appDBContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while inserting a transaction.");
+            throw;
+        }
     }
 
-    public async Task<Transaction> GetTransactionAsync(int transactionId)
+    public async Task<Transaction?> GetTransactionAsync(int transactionId)
     {
-        return await _appDBContext.Transactions.Include(t => t.User).FirstOrDefaultAsync(t => t.TransactionId == transactionId);
+        try
+        {
+            return await _appDBContext.Transactions.Include(t => t.User).FirstOrDefaultAsync(t => t.TransactionId == transactionId);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Error occurred while fetching transaction with ID {transactionId}.");
+            throw;
+        }
     }
 
-    public async Task<bool> UpdateTransactionAsync(Transaction transaction)
+    public async void UpdateTransactionAsync(Transaction transaction)
     {
-        _appDBContext.Transactions.Update(transaction);
-        await _appDBContext.SaveChangesAsync();
-        return true;
+        try
+        {
+            _appDBContext.Transactions.Update(transaction);
+            await _appDBContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Error occurred while updating transaction with ID {transaction.TransactionId}.");
+            throw;
+        }
     }
 
-    public async Task<bool> DeleteTransactionAsync(Transaction transaction)
+    public async void DeleteTransactionAsync(Transaction transaction)
     {
-        _appDBContext.Transactions.Remove(transaction);
-        await _appDBContext.SaveChangesAsync();
-        return true;
+        try
+        {
+            _appDBContext.Transactions.Remove(transaction);
+            await _appDBContext.SaveChangesAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, $"Error occurred while deleting transaction with ID {transaction.TransactionId}.");
+            throw;
+        }
     }
 
     public async Task<List<Transaction>> GetTransactionsByUserAndTimeframeAsync(int? userId, DateTime start, DateTime end)
     {
-        var query = _appDBContext.Transactions.Include(t => t.User).Where(t => t.TransactionDate >= start && t.TransactionDate <= end);
-
-        if (userId.HasValue && userId.Value != 0)
+        try
         {
-            query = query.Where(t => t.UserId == userId);
-        }
+            var query = _appDBContext.Transactions.Include(t => t.User).Where(t => t.TransactionDate >= start && t.TransactionDate <= end);
 
-        return await query.ToListAsync();
+            if (userId.HasValue && userId.Value != 0)
+            {
+                query = query.Where(t => t.UserId == userId);
+            }
+
+            return await query.ToListAsync();
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while fetching transactions by user and timeframe.");
+            throw;
+        }
     }
 }

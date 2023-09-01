@@ -1,12 +1,12 @@
 ﻿using Categorically.DataAccess.Models;
 
-namespace Categorically.Services.Interfaces;
+namespace Categorically.Services;
 
 public interface IUserService
 {
-    Task<bool> DeleteUserAsync(User User);
+    void InsertUserAsync(User user);
+    Task<User?> GetUserAsync(int userId);
     Task<List<User>> GetAllUsersAsync();
-    Task<User> GetUserAsync(int UserId);
-    Task<bool> InsertUserAsync(User User);
-    Task<bool> UpdateUserAsync(User User);
+    void UpdateUserAsync(User user);
+    void DeleteUserAsync(User user);
 }

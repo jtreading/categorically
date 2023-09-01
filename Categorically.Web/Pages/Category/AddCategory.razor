@@ -1,8 +1,8 @@
 ﻿@page "/AddCategory"
-@using Categorically.Services
 @using Categorically.DataAccess.Models
-@inject CategoryService categoryService
-@inject UserService userService
+@using Categorically.Tasks.Tasks;
+@inject CategoryTasks categoryTasks
+@inject UserTasks userTasks
 @inject NavigationManager NavigationManager
 
 <h2>Add Category</h2>
@@ -44,12 +44,12 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Users = await userService.GetAllUsersAsync();
+        Users = await userTasks.GetAllUsersAsync();
     }
 
     protected async Task CreateCategory()
     {
-        await categoryService.InsertCategoryAsync(category);
+        await categoryTasks.InsertCategoryAsync(category);
         NavigationManager.NavigateTo("Categories");
     }
 

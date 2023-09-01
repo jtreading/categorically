@@ -42,15 +42,13 @@
         </RadzenDatePicker>
         <div class="ml-auto">
             <RadzenButton ButtonStyle="ButtonStyle.Primary" Click="@UpdateTransactionList">
-                <span class="oi oi-loop"></span>
+                <span class="oi oi-loop" />
                 Update
             </RadzenButton>
             <a href="addtransaction">
                 <RadzenButton ButtonStyle="ButtonStyle.Secondary">
-
-                    <span class="oi oi-plus"></span>
+                    <span class="oi oi-plus" />
                     Add Transaction
-
                 </RadzenButton>
             </a>
         </div>
@@ -71,8 +69,8 @@
     [Inject]
     private TransactionTasks _transactionTasks { get; set; }
 
-    DateTime startDate = new DateTime(2023, 6, 1);
-    DateTime endDate = new DateTime(2023, 6, 30);
+    DateTime startDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
+    DateTime endDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).AddMonths(1).AddDays(-1);
     int selectedUserId;
 
     List<User> Users = new List<User>();
