@@ -1,4 +1,5 @@
 using Categorically.DataAccess;
+using Categorically.Services;
 using Categorically.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Radzen;
@@ -8,9 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseWebRoot("wwwroot").UseStaticWebAssets();
 
 #region Dependency Injection
-// SERVICES
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+// SERVICES
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 // TASKS
 builder.Services.AddScoped<ITransactionTasks, TransactionTasks>();

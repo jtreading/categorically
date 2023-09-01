@@ -37,6 +37,20 @@ public class TransactionTasks : ITransactionTasks
         }
     }
 
+    public async Task<List<Transaction>> GetTransactionsByUserAndTimeframeAsync(int? userId, DateTime start, DateTime end)
+    {
+        try
+        {
+            var transactions = await _transactionService.GetTransactionsByUserAndTimeframeAsync(userId, start, end);
+            return transactions;
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error occurred while getting transactions.");
+            throw;
+        }
+    }
+
     public async Task<List<Transaction>> GetAllTransactionsAsync()
     {
         try

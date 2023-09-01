@@ -1,8 +1,8 @@
 ﻿@page "/DeleteCategory/{CategoryId}"
-@using Categorically.Services
+@using Categorically.Tasks
 @using Categorically.DataAccess.Models
-@inject CategoryService categoryService
-@inject NavigationManager NavigationManager
+@inject ICategoryTasks categoryTasks
+@inject NavigationManager navigationManager
 
 <h2>Delete Category</h2>
 <hr />
@@ -37,23 +37,27 @@
 
 @code {
     [Parameter]
-    public string categoryId { get; set; }
+    public int categoryId { get; set; }
 
     Category category = new();
 
     protected override async Task OnInitializedAsync()
     {
-        category = await categoryService.GetCategoryAsync(Convert.ToInt32(categoryId));
+        var response = await categoryTasks.GetCategoryAsync(categoryId);
+        if (response != null)
+        {
+            category = response;
+        }
     }
 
     protected async Task DeleteThisCategory()
     {
-        await categoryService.DeleteCategoryAsync(category);
-        NavigationManager.NavigateTo("Categories");
+        await categoryTasks.DeleteCategoryAsync(category);
+        navigationManager.NavigateTo("Categories");
     }
 
     void Cancel()
     {
-        NavigationManager.NavigateTo("Categories");
+        navigationManager.NavigateTo("Categories");
     }
 }

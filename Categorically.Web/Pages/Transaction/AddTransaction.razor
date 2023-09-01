@@ -1,10 +1,10 @@
 ﻿@page "/AddTransaction"
 @using Categorically.DataAccess.Models
-@using Categorically.Services;
-@inject TransactionService transactionService
-@inject CategoryService categoryService
-@inject UserService userService
-@inject NavigationManager NavigationManager
+@using Categorically.Tasks;
+@inject ITransactionTasks transactionTasks
+@inject ICategoryTasks categoryTasks
+@inject IUserTasks userTasks
+@inject NavigationManager navigationManager
 
 <h2>Add Transaction</h2>
 <hr />
@@ -32,7 +32,7 @@
                 <label for="CategoryId" class="control-label">Category</label>
                 <select form="CategoryId" class="form-control" @bind="@transaction.CategoryId">
                     <option value="">Select category</option>
-                    @foreach (var category in Categories)
+                    @foreach (var category in categories)
                     {
                         <option value="@category.CategoryId">@category.CategoryName</option>
                     }
@@ -42,7 +42,7 @@
                 <label for="UserId" class="control-label">User</label>
                 <select form="UserId" class="form-control" @bind="@transaction.UserId">
                     <option value="">Select user</option>
-                    @foreach (var user in Users)
+                    @foreach (var user in users)
                     {
                         <option value="@user.UserId">@user.UserName</option>
                     }
@@ -63,24 +63,24 @@
 
 @code {
     Transaction transaction = new Transaction();
-    List<Category> Categories = new List<Category>();
-    List<User> Users = new List<User>();
+    List<Category> categories = new List<Category>();
+    List<User> users = new List<User>();
 
     protected override async Task OnInitializedAsync()
     {
         transaction.TransactionDate = DateTime.Today;
-        Categories = await categoryService.GetAllCategoriesAsync();
-        Users = await userService.GetAllUsersAsync();
+        categories = await categoryTasks.GetAllCategoriesAsync();
+        users = await userTasks.GetAllUsersAsync();
     }
 
     protected async Task CreateTransaction()
     {
-        await transactionService.InsertTransactionAsync(transaction);
-        NavigationManager.NavigateTo("Transactions");
+        await transactionTasks.InsertTransactionAsync(transaction);
+        navigationManager.NavigateTo("Transactions");
     }
 
     void Cancel()
     {
-        NavigationManager.NavigateTo("Transactions");
+        navigationManager.NavigateTo("Transactions");
     }
 }

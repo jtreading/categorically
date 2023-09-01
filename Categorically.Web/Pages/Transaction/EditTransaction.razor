@@ -1,15 +1,15 @@
-﻿@page "/EditTransaction/{TransactionId:int}"
-@using Categorically.Services
+﻿@page "/EditTransaction/{transactionId:int}"
+@using Categorically.Tasks
 @using Categorically.DataAccess.Models
-@inject TransactionService transactionService
-@inject CategoryService categoryService
-@inject UserService userService
-@inject NavigationManager NavigationManager
+@inject ITransactionTasks transactionTasks
+@inject ICategoryTasks categoryTasks
+@inject IUserTasks userTasks
+@inject NavigationManager navigationManager
 
 <h2>Edit Transaction</h2>
 <hr />
 
-@if (Transaction is null)
+@if (transaction is null)
 {
     <p><em>Loading...</em></p>
 }
@@ -20,25 +20,25 @@ else
             <div class="col-md-8">
                 <div class="form-group">
                     <label for="TransactionDate" class="control-label">Transaction Date</label>
-                    <input form="TransactionDate" type="date" class="form-control" @bind="@Transaction.TransactionDate" />
+                    <input form="TransactionDate" type="date" class="form-control" @bind="@transaction.TransactionDate" />
                 </div>
                 <div class="form-group">
                     <label for="Amount" class="control-label">Amount</label>
-                    <input form="Amount" type="number" step="0.01" class="form-control" @bind="@Transaction.Amount" />
+                    <input form="Amount" type="number" step="0.01" class="form-control" @bind="@transaction.Amount" />
                 </div>
                 <div class="form-group">
                     <label for="ChargedByName" class="control-label">Charged By Name</label>
-                    <input form="ChargedByName" class="form-control" @bind="@Transaction.ChargedByName" />
+                    <input form="ChargedByName" class="form-control" @bind="@transaction.ChargedByName" />
                 </div>
                 <div class="form-group">
                     <label for="Description" class="control-label">Description</label>
-                    <input form="Description" class="form-control" @bind="@Transaction.Description" />
+                    <input form="Description" class="form-control" @bind="@transaction.Description" />
                 </div>
                 <div class="form-group">
                     <label for="CategoryId" class="control-label">Category</label>
-                    <select form="CategoryId" class="form-control" @bind="@Transaction.CategoryId">
+                    <select form="CategoryId" class="form-control" @bind="@transaction.CategoryId">
                         <option value="">Select category</option>
-                        @foreach (var category in Categories)
+                        @foreach (var category in categories)
                         {
                             <option value="@category.CategoryId">@category.CategoryName</option>
                         }
@@ -46,9 +46,9 @@ else
                 </div>
                 <div class="form-group">
                     <label for="UserId" class="control-label">User</label>
-                    <select form="UserId" class="form-control" @bind="@Transaction.UserId">
+                    <select form="UserId" class="form-control" @bind="@transaction.UserId">
                         <option value="">Select user</option>
-                        @foreach (var user in Users)
+                        @foreach (var user in users)
                         {
                             <option value="@user.UserId">@user.UserName</option>
                         }
@@ -69,28 +69,32 @@ else
 }
 
 @code {
-    Transaction Transaction;
-    List<Category> Categories = new List<Category>();
-    List<User> Users = new List<User>();
+    Transaction transaction = new();
+    List<Category> categories = new();
+    List<User> users = new();
 
     [Parameter]
-    public int TransactionId { get; set; }
+    public int transactionId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        Transaction = await transactionService.GetTransactionAsync(TransactionId);
-        Categories = await categoryService.GetAllCategoriesAsync();
-        Users = await userService.GetAllUsersAsync();
+        var response = await transactionTasks.GetTransactionAsync(transactionId);
+        if (response != null)
+        {
+            transaction = response;
+        };
+        categories = await categoryTasks.GetAllCategoriesAsync();
+        users = await userTasks.GetAllUsersAsync();
     }
 
     protected async Task UpdateTransaction()
     {
-        await transactionService.UpdateTransactionAsync(Transaction);
-        NavigationManager.NavigateTo("Transactions");
+        await transactionTasks.UpdateTransactionAsync(transaction);
+        navigationManager.NavigateTo("Transactions");
     }
 
     void Cancel()
     {
-        NavigationManager.NavigateTo("Transactions");
+        navigationManager.NavigateTo("Transactions");
     }
 }

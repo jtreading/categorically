@@ -1,14 +1,14 @@
 ﻿@page "/Categories"
-@using Categorically.Tasks.Tasks
+@using Categorically.Tasks
 @using Categorically.DataAccess.Models
-@inject CategoryTasks categoryTasks
+@inject ICategoryTasks categoryTasks
 
 <NavLink class="nav-link" href="AddCategory">
     <span class="oi oi-plus" aria-hidden="true">Add New</span>
 </NavLink>
 
 <h1>Category List</h1>
-@if (CategoryList is null)
+@if (categoryList is null)
 {
     <p><em>Loading...</em></p>
 }
@@ -24,7 +24,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var category in CategoryList)
+            @foreach (var category in categoryList)
             {
                 <tr>
                     <td>@category.CategoryId</td>
@@ -45,10 +45,10 @@ else
 }
 
 @code {
-    List<Category> CategoryList;
+    List<Category> categoryList = new();
 
     protected override async Task OnInitializedAsync()
     {
-        CategoryList = await Task.Run(() => categoryService.GetAllCategoriesAsync());
+        categoryList = await Task.Run(() => categoryTasks.GetAllCategoriesAsync());
     }
 }

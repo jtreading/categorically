@@ -1,9 +1,9 @@
 ﻿@page "/AddCategory"
 @using Categorically.DataAccess.Models
-@using Categorically.Tasks.Tasks;
-@inject CategoryTasks categoryTasks
-@inject UserTasks userTasks
-@inject NavigationManager NavigationManager
+@using Categorically.Tasks;
+@inject ICategoryTasks categoryTasks
+@inject IUserTasks userTasks
+@inject NavigationManager navigationManager
 
 <h2>Add Category</h2>
 <hr />
@@ -19,7 +19,7 @@
                 <label for="UserId" class="control-label">User</label>
                 <select form="UserId" class="form-control" @bind="@category.UserId">
                     <option value="">Select user</option>
-                    @foreach (var user in Users)
+                    @foreach (var user in users)
                     {
                         <option value="@user.UserId">@user.UserName</option>
                     }
@@ -39,22 +39,22 @@
 </form>
 
 @code {
-    Category category = new Category();
-    List<User> Users = new List<User>();
+    Category category = new();
+    List<User> users = new();
 
     protected override async Task OnInitializedAsync()
     {
-        Users = await userTasks.GetAllUsersAsync();
+        users = await userTasks.GetAllUsersAsync();
     }
 
     protected async Task CreateCategory()
     {
         await categoryTasks.InsertCategoryAsync(category);
-        NavigationManager.NavigateTo("Categories");
+        navigationManager.NavigateTo("Categories");
     }
 
     void Cancel()
     {
-        NavigationManager.NavigateTo("Categories");
+        navigationManager.NavigateTo("Categories");
     }
 }

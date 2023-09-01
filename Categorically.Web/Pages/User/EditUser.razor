@@ -1,8 +1,8 @@
-﻿@page "/EditUser/{UserId}"
-@using Categorically.Services
+﻿@page "/EditUser/{userId}"
+@using Categorically.Tasks
 @using Categorically.DataAccess.Models
-@inject UserService userService
-@inject NavigationManager NavigationManager
+@inject IUserTasks userTasks
+@inject NavigationManager navigationManager
 
 <h2>Edit User</h2>
 <hr />
@@ -12,23 +12,23 @@
         <div class="col-md-8">
             <div class="form-group">
                 <label for="UserId" class="control-label">User ID</label>
-                <input disabled form="UserId" class="form-control" @bind="@usr.UserId" />
+                <input disabled form="UserId" class="form-control" @bind="@user.UserId" />
             </div>
             <div class="form-group">
                 <label for="UserName" class="control-label">UserName</label>
-                <input form="UserName" class="form-control" @bind="@usr.UserName" />
+                <input form="UserName" class="form-control" @bind="@user.UserName" />
             </div>
             <div class="form-group">
                 <label for="FirstName" class="control-label">First Name</label>
-                <input form="FirstName" class="form-control" @bind="@usr.FirstName" />
+                <input form="FirstName" class="form-control" @bind="@user.FirstName" />
             </div>
             <div class="form-group">
                 <label for="LastName" class="control-label">Last Name</label>
-                <input form="LastName" class="form-control" @bind="@usr.LastName" />
+                <input form="LastName" class="form-control" @bind="@user.LastName" />
             </div>
             <div class="form-group">
                 <label for="Email" class="control-label">Email</label>
-                <input form="Email" class="form-control" @bind="@usr.Email" />
+                <input form="Email" class="form-control" @bind="@user.Email" />
             </div>
         </div>
     </div>
@@ -45,19 +45,27 @@
 
 @code {
     [Parameter]
-    public string UserId { get; set; }
-    User usr = new User();
+    public int userId { get; set; }
+
+    User user = new();
+
     protected override async Task OnInitializedAsync()
     {
-        usr = await Task.Run(() => userService.GetUserAsync(Convert.ToInt32(UserId)));
+        var response = await userTasks.GetUserAsync(userId);
+        if (response != null)
+        {
+            user = response;
+        }
     }
+
     protected async void UpdateUser()
     {
-        await userService.UpdateUserAsync(usr);
-        NavigationManager.NavigateTo("Users");
+        await userTasks.UpdateUserAsync(user);
+        navigationManager.NavigateTo("Users");
     }
+
     void Cancel()
     {
-        NavigationManager.NavigateTo("Users");
+        navigationManager.NavigateTo("Users");
     }
 }

@@ -1,10 +1,10 @@
 ﻿@page "/summary"
 @using Categorically.DataAccess.Models;
-@using Categorically.Services;
-@using Categorically.Tasks.Tasks;
+@using Categorically.Tasks;
 @using Radzen
 @using Radzen.Blazor
-@inject UserService userService
+@inject IUserTasks userTasks
+@inject ITransactionTasks transactionTasks
 
 <h3>SummaryView</h3>
 
@@ -29,16 +29,16 @@
 
 <div class="container consistent-font">
     <RadzenStack Orientation="Orientation.Horizontal" HorizontalAlign="HorizontalAlignment.Center" class="mb-3">
-        <RadzenDropDown @bind-Value="@selectedUserId" Data="@Users" TextProperty="UserName" ValueProperty="UserId">
-            <Label>User:</Label>
+        <RadzenDropDown @bind-Value="@selectedUserId" Data="@users" TextProperty="UserName" ValueProperty="UserId">
+            <label>User:</label>
         </RadzenDropDown>
 
         <RadzenDatePicker @bind-Value="@startDate">
-            <Label>Start Date:</Label>
+            <label>Start Date:</label>
         </RadzenDatePicker>
 
         <RadzenDatePicker @bind-Value="@endDate">
-            <Label>End Date:</Label>
+            <label>End Date:</label>
         </RadzenDatePicker>
         <div class="ml-auto">
             <RadzenButton ButtonStyle="ButtonStyle.Primary" Click="@UpdateTransactionList">
@@ -66,20 +66,17 @@
 </div>
 
 @code {
-    [Inject]
-    private TransactionTasks _transactionTasks { get; set; }
-
     DateTime startDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
     DateTime endDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).AddMonths(1).AddDays(-1);
     int selectedUserId;
 
-    List<User> Users = new List<User>();
-    List<SummaryItem> summaryData = new List<SummaryItem>();
+    List<User> users = new();
+    List<SummaryItem> summaryData = new();
 
     async Task UpdateTransactionList()
     {
-        Users = await userService.GetAllUsersAsync();
-        summaryData = await _transactionTasks.GetSummaryItemsAsync(selectedUserId, startDate, endDate);
+        users = await userTasks.GetAllUsersAsync();
+        summaryData = await transactionTasks.GetSummaryItemsAsync(selectedUserId, startDate, endDate);
     }
 
     protected override async Task OnInitializedAsync()

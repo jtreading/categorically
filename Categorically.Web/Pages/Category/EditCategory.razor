@@ -1,9 +1,9 @@
-﻿@page "/EditCategory/{CategoryId}"
-@using Categorically.Services
+﻿@page "/EditCategory/{categoryId}"
+@using Categorically.Tasks
 @using Categorically.DataAccess.Models
-@inject CategoryService categoryService
-@inject UserService userService
-@inject NavigationManager NavigationManager
+@inject ICategoryTasks categoryTasks
+@inject IUserTasks userTasks
+@inject NavigationManager navigationManager
 
 <h2>Edit Category</h2>
 <hr />
@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label for="UserId" class="control-label">User</label>
                 <select form="UserId" class="form-control" @bind="@category.UserId">
-                    @foreach (var user in Users)
+                    @foreach (var user in users)
                     {
                         <option value="@user.UserId">@user.UserName</option>
                     }
@@ -43,24 +43,29 @@
 
 @code {
     [Parameter]
-    public string CategoryId { get; set; }
-    Category category = new Category();
-    List<User> Users = new List<User>();
+    public int categoryId { get; set; }
+
+    Category category = new();
+    List<User> users = new();
 
     protected override async Task OnInitializedAsync()
     {
-        category = await Task.Run(() => categoryService.GetCategoryAsync(Convert.ToInt32(CategoryId)));
-        Users = await userService.GetAllUsersAsync();
+        var response = await categoryTasks.GetCategoryAsync(categoryId);
+        if (response != null)
+        {
+            category = response;
+        }
+        users = await userTasks.GetAllUsersAsync();
     }
 
     protected async Task UpdateCategory()
     {
-        await categoryService.UpdateCategoryAsync(category);
-        NavigationManager.NavigateTo("Categories");
+        await categoryTasks.UpdateCategoryAsync(category);
+        navigationManager.NavigateTo("Categories");
     }
 
     void Cancel()
     {
-        NavigationManager.NavigateTo("Categories");
+        navigationManager.NavigateTo("Categories");
     }
 }

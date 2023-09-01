@@ -1,14 +1,14 @@
 ﻿@page "/Users"
-@using Categorically.Services;
+@using Categorically.Tasks;
 @using Categorically.DataAccess.Models
-@inject UserService userService
+@inject IUserTasks userTasks
 
 <NavLink class="nav-link" href="AddUser">
     <span class="oi oi-plus" aria-hidden="true">Add New</span>
 </NavLink>
 
 <h1>User Info</h1>
-@if (UsrObj is null)
+@if (users is null)
 {
     <p><em>Loading... !</em></p>
 }
@@ -25,7 +25,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var usr in UsrObj)
+            @foreach (var usr in users)
             {
                 <tr>
                     <td>@usr.UserId</td>
@@ -49,9 +49,14 @@ else
 
 
 @code {
-    List<User> UsrObj;
+    List<User> users = new();
+
     protected override async Task OnInitializedAsync()
     {
-        UsrObj = await Task.Run(() => userService.GetAllUsersAsync());
+        var response = await userTasks.GetAllUsersAsync();
+        if (response is not null)
+        {
+            users = response;
+        }
     }
 }

@@ -1,8 +1,8 @@
 ﻿@page "/Transactions"
-@using Categorically.Services
+@using Categorically.Tasks
 @using Categorically.DataAccess.Models
-@inject TransactionService transactionService
-@inject UserService userService
+@inject ITransactionTasks transactionTasks
+@inject IUserTasks userTasks
 
 <h1>Transaction List</h1>
 
@@ -19,7 +19,7 @@
         <label for="selectedUserId">User:</label>
         <select id="selectedUserId" class="form-control" @bind="@selectedUserId" >
             <option value="">All Users</option>
-            @foreach (var user in Users)
+            @foreach (var user in users)
             {
                 <option value="@user.UserId">@user.UserName</option>
             }
@@ -33,7 +33,7 @@
     </div>
 </div>
 
-@if (TransactionList is null)
+@if (transactionList is null)
 {
     <p><em>Loading...</em></p>
 }
@@ -52,7 +52,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var transaction in TransactionList)
+            @foreach (var transaction in transactionList)
             {
                 <tr>
                     <td>@transaction.TransactionId</td>
@@ -77,15 +77,15 @@ else
 }
 
 @code {
-    List<Transaction> TransactionList = new();
-    List<User> Users = new();
+    List<Transaction> transactionList = new();
+    List<User> users = new();
     DateTime startDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1);
     DateTime endDate = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1).AddMonths(1).AddDays(-1);
     int selectedUserId;
 
     protected override async Task OnInitializedAsync()
     {
-        Users = await userService.GetAllUsersAsync();
+        users = await userTasks.GetAllUsersAsync();
         await LoadTransactionsAsync();
     }
 
@@ -96,18 +96,18 @@ else
 
     private async Task LoadTransactionsAsync()
     {
-        TransactionList = await transactionService.GetTransactionsByUserAndTimeframeAsync(selectedUserId, startDate, endDate);
+        transactionList = await transactionTasks.GetTransactionsByUserAndTimeframeAsync(selectedUserId, startDate, endDate);
     }
 
     private async Task UpdateTransactionList()
     {
         if (selectedUserId > 0)
         {
-            TransactionList = await transactionService.GetTransactionsByUserAndTimeframeAsync(selectedUserId, startDate, endDate);
+            transactionList = await transactionTasks.GetTransactionsByUserAndTimeframeAsync(selectedUserId, startDate, endDate);
         }
         else
         {
-            TransactionList = await transactionService.GetTransactionsByUserAndTimeframeAsync(null, startDate, endDate);
+            transactionList = await transactionTasks.GetTransactionsByUserAndTimeframeAsync(null, startDate, endDate);
         }
         StateHasChanged();
     }
