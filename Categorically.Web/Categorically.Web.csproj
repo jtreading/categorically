@@ -20,12 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Categorically.DataAccess\Categorically.DataAccess.csproj" />
-    <ProjectReference Include="..\Categorically.Services\Categorically.Services.csproj" />
-    <ProjectReference Include="..\Categorically.Tasks\Categorically.Tasks.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <UpToDateCheckInput Remove="Pages\Transaction\SummaryView.razor" />
   </ItemGroup>
 
@@ -35,6 +29,10 @@
 
   <ItemGroup>
     <None Include="Pages\Transaction\SummaryView.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Categorically.Tasks\Categorically.Tasks.csproj" />
   </ItemGroup>
 
 </Project>

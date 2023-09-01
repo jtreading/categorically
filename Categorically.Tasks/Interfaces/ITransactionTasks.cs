@@ -10,4 +10,5 @@ public interface ITransactionTasks
     Task<Transaction?> GetTransactionAsync(int transactionId);
     Task InsertTransactionAsync(Transaction transaction);
     Task UpdateTransactionAsync(Transaction transaction);
+    Task<List<Transaction>> GetTransactionsByUserAndTimeframeAsync(int? userId, DateTime start, DateTime end);
 }
