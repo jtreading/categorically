@@ -29,7 +29,7 @@ public class UserService : IUserService
         }
     }
 
-    public async void InsertUserAsync(User user)
+    public async Task InsertUserAsync(User user)
     {
         try
         {
@@ -56,7 +56,7 @@ public class UserService : IUserService
         }
     }
 
-    public async void UpdateUserAsync(User user)
+    public async Task UpdateUserAsync(User user)
     {
         try
         {
@@ -70,7 +70,7 @@ public class UserService : IUserService
         }
     }
 
-    public async void DeleteUserAsync(User user)
+    public async Task DeleteUserAsync(User user)
     {
         try
         {

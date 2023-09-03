@@ -68,7 +68,7 @@ public class TransactionTasks : ITransactionTasks
     {
         try
         {
-            _transactionService.InsertTransactionAsync(transaction);
+            await _transactionService.InsertTransactionAsync(transaction);
             await Task.CompletedTask;
         }
         catch (Exception ex)
@@ -95,7 +95,7 @@ public class TransactionTasks : ITransactionTasks
     {
         try
         {
-            _transactionService.UpdateTransactionAsync(transaction);
+            await _transactionService.UpdateTransactionAsync(transaction);
             await Task.CompletedTask;
         }
         catch (Exception ex)
@@ -109,7 +109,7 @@ public class TransactionTasks : ITransactionTasks
     {
         try
         {
-            _transactionService.DeleteTransactionAsync(transaction);
+            await _transactionService.DeleteTransactionAsync(transaction);
             await Task.CompletedTask;
         }
         catch (Exception ex)

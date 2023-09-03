@@ -32,7 +32,7 @@ public class CategoryTasks : ICategoryTasks
     {
         try
         {
-            _categoryService.InsertCategoryAsync(category);
+            await _categoryService.InsertCategoryAsync(category);
             await Task.CompletedTask;
         }
         catch (Exception ex)
@@ -59,7 +59,7 @@ public class CategoryTasks : ICategoryTasks
     {
         try
         {
-            _categoryService.UpdateCategoryAsync(category);
+            await _categoryService.UpdateCategoryAsync(category);
             await Task.CompletedTask;
         }
         catch (Exception ex)
@@ -73,7 +73,7 @@ public class CategoryTasks : ICategoryTasks
     {
         try
         {
-            _categoryService.DeleteCategoryAsync(category);
+            await _categoryService.DeleteCategoryAsync(category);
             await Task.CompletedTask;
         }
         catch (Exception ex)

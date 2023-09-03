@@ -29,7 +29,7 @@ public class TransactionService : ITransactionService
         }
     }
 
-    public async void InsertTransactionAsync(Transaction transaction)
+    public async Task InsertTransactionAsync(Transaction transaction)
     {
         try
         {
@@ -56,7 +56,7 @@ public class TransactionService : ITransactionService
         }
     }
 
-    public async void UpdateTransactionAsync(Transaction transaction)
+    public async Task UpdateTransactionAsync(Transaction transaction)
     {
         try
         {
@@ -70,7 +70,7 @@ public class TransactionService : ITransactionService
         }
     }
 
-    public async void DeleteTransactionAsync(Transaction transaction)
+    public async Task DeleteTransactionAsync(Transaction transaction)
     {
         try
         {

@@ -32,7 +32,7 @@ public class UserTasks : IUserTasks
     {
         try
         {
-            _userService.InsertUserAsync(user);
+            await _userService.InsertUserAsync(user);
             await Task.CompletedTask;
         }
         catch (Exception ex)
@@ -59,7 +59,7 @@ public class UserTasks : IUserTasks
     {
         try
         {
-            _userService.UpdateUserAsync(user);
+            await _userService.UpdateUserAsync(user);
             await Task.CompletedTask;
         }
         catch (Exception ex)
@@ -73,7 +73,7 @@ public class UserTasks : IUserTasks
     {
         try
         {
-            _userService.DeleteUserAsync(user);
+            await _userService.DeleteUserAsync(user);
             await Task.CompletedTask;
         }
         catch (Exception ex)

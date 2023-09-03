@@ -29,7 +29,7 @@ public class CategoryService : ICategoryService
         }
     }
 
-    public async void InsertCategoryAsync(Category category)
+    public async Task InsertCategoryAsync(Category category)
     {
         try
         {
@@ -56,7 +56,7 @@ public class CategoryService : ICategoryService
         }
     }
 
-    public async void UpdateCategoryAsync(Category category)
+    public async Task UpdateCategoryAsync(Category category)
     {
         try
         {
@@ -70,7 +70,7 @@ public class CategoryService : ICategoryService
         }
     }
 
-    public async void DeleteCategoryAsync(Category category)
+    public async Task DeleteCategoryAsync(Category category)
     {
         try
         {
