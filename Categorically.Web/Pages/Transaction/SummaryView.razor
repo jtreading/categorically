@@ -3,65 +3,50 @@
 @using Categorically.Tasks;
 @using Radzen
 @using Radzen.Blazor
+@using Categorically.Web.Components
 @inject IUserTasks userTasks
+@inject ICategoryTasks categoryTasks
 @inject ITransactionTasks transactionTasks
+@inject NavigationManager NavigationManager
 
-<h3>SummaryView</h3>
+<h3>Summary</h3>
 
-<style>
-    /* Apply consistent font */
-    .consistent-font {
-        font-family: Arial, sans-serif;
-    }
+<RadzenStack Orientation="Orientation.Horizontal" HorizontalAlign="HorizontalAlignment.Center" class="mb-3">
+    <RadzenDropDown @bind-Value="@selectedUserId" Data="@users" TextProperty="UserName" ValueProperty="UserId">
+        <label>User:</label>
+    </RadzenDropDown>
 
-    /* Adjust button style */
-    .styled-button {
-        vertical-align: middle;
-        height: 38px;
-    }
+    <RadzenDatePicker @bind-Value="@startDate">
+        <label>Start Date:</label>
+    </RadzenDatePicker>
 
-    /* Adjust chart size */
-    .larger-chart {
-        width: 75%;
-        margin: auto;
-    }
-</style>
-
-<div class="container consistent-font">
-    <RadzenStack Orientation="Orientation.Horizontal" HorizontalAlign="HorizontalAlignment.Center" class="mb-3">
-        <RadzenDropDown @bind-Value="@selectedUserId" Data="@users" TextProperty="UserName" ValueProperty="UserId">
-            <label>User:</label>
-        </RadzenDropDown>
-
-        <RadzenDatePicker @bind-Value="@startDate">
-            <label>Start Date:</label>
-        </RadzenDatePicker>
-
-        <RadzenDatePicker @bind-Value="@endDate">
-            <label>End Date:</label>
-        </RadzenDatePicker>
-        <div class="ml-auto">
-            <RadzenButton ButtonStyle="ButtonStyle.Primary" Click="@UpdateTransactionList">
-                <span class="oi oi-loop" />
-                Update
+    <RadzenDatePicker @bind-Value="@endDate">
+        <label>End Date:</label>
+    </RadzenDatePicker>
+    <div class="ml-auto">
+        <RadzenButton ButtonStyle="ButtonStyle.Primary" Click="@UpdateTransactionList">
+            <span class="oi oi-loop" />
+            Update
+        </RadzenButton>
+        <a href="addtransaction">
+            <RadzenButton ButtonStyle="ButtonStyle.Secondary">
+                <span class="oi oi-plus" />
+                Add Transaction
             </RadzenButton>
-            <a href="addtransaction">
-                <RadzenButton ButtonStyle="ButtonStyle.Secondary">
-                    <span class="oi oi-plus" />
-                    Add Transaction
-                </RadzenButton>
-            </a>
-        </div>
-    </RadzenStack>
+        </a>
+    </div>
+</RadzenStack>
 
-    <div class="row">
-        <div class="col-sm-12 col-lg-8 offset-lg-2 my-5">
-            <RadzenChart class="larger-chart">
-                <RadzenPieSeries Data="@summaryData" Title="Summary" CategoryProperty="CategoryName" ValueProperty="Amount">
-                    <RadzenSeriesDataLabels Visible="true" />
-                </RadzenPieSeries>
-            </RadzenChart>
-        </div>
+<div class="row">
+    <div class="col-sm-12 col-lg-8 offset-lg-2 my-5">
+        <RadzenChart>
+            <RadzenPieSeries Data="@summaryData" Title="Summary" CategoryProperty="CategoryName" ValueProperty="Amount">
+                <RadzenSeriesDataLabels Visible="true" />
+            </RadzenPieSeries>
+        </RadzenChart>
+
+        <AddTxn categoryTasks="@categoryTasks" navigationManager="@NavigationManager" userTasks="@userTasks" transactionTasks="@transactionTasks"> </AddTxn>
+
     </div>
 </div>
 

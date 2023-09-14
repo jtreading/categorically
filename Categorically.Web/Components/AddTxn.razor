@@ -1,0 +1,64 @@
+﻿@using Categorically.DataAccess.Models
+@using Categorically.Tasks
+@using Radzen
+@using Radzen.Blazor
+
+<h2>Add Transaction</h2>
+<hr />
+
+<RadzenForm TItem="Transaction" Data="@transaction" Submit="@CreateTransaction">
+    <div class="row">
+        <div class="col-md-8">
+            <RadzenDatePicker @bind-Value="@transaction.TransactionDate" Id="TransactionDate" Name="TransactionDate" Label="Transaction Date" />
+            <RadzenNumeric @bind-Value="@transaction.Amount" Id="Amount" Name="Amount" Label="Amount" Step="0.01" />
+            <RadzenTextBox @bind-Value="@transaction.ChargedByName" Id="ChargedByName" Name="ChargedByName" Label="Charged By Name" />
+            <RadzenTextBox @bind-Value="@transaction.Description" Id="Description" Name="Description" Label="Description" />
+            <RadzenDropDown @bind-Value="@transaction.CategoryId" Data="@categories" TextProperty="CategoryName" ValueProperty="CategoryId" Id="CategoryId" Name="CategoryId" Label="Category" />
+            <RadzenDropDown @bind-Value="@transaction.UserId" Data="@users" TextProperty="UserName" ValueProperty="UserId" Id="UserId" Name="UserId" Label="User" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <RadzenButton ButtonType="ButtonType.Submit" Text="Save" />
+            <RadzenButton ButtonType="ButtonType.Button" Text="Cancel" Click="@Cancel" />
+        </div>
+    </div>
+</RadzenForm>
+
+@code {
+    [Parameter]
+    public ITransactionTasks transactionTasks { get; set; }
+    [Parameter]
+    public ICategoryTasks categoryTasks { get; set; }
+    [Parameter]
+    public IUserTasks userTasks { get; set; }
+
+    [Parameter]
+    public NavigationManager navigationManager { get; set; }
+
+
+
+
+    Transaction transaction = new Transaction();
+    List<Category> categories = new List<Category>();
+    List<User> users = new List<User>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        transaction.TransactionDate = DateTime.Today;
+        categories = await categoryTasks.GetAllCategoriesAsync();
+        users = await userTasks.GetAllUsersAsync();
+    }
+
+    private async Task CreateTransaction()
+    {
+        await transactionTasks.InsertTransactionAsync(transaction);
+        navigationManager.NavigateTo("Transactions");
+    }
+
+    private void Cancel()
+    {
+        navigationManager.NavigateTo("Transactions");
+    }
+}
