@@ -2,7 +2,7 @@ version: 0.0
 os: windows
 files:
     - source: /publish
-    - destination: C:/CategoricallyApp
+      destination: C:/CategoricallyApp
 hooks:
   BeforeInstall:
     - location: scripts/BeforeInstall.ps1
