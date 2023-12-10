@@ -4,6 +4,6 @@ files:
   - source: /publish
     destination: C:/app
 hooks:
-  - location: scripts/AfterInstall.ps1
+    location: scripts/AfterInstall.ps1
     timeout: 300
     runas: Administrator
