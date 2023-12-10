@@ -25,9 +25,10 @@ phases:
 artifacts:
   files:
     - ./publish/**
-    - appspec.yml
     - ./scripts/**
-  discard-paths: yes
+    - ./Categorically.Web/wwwroot/**
+    - appspec.yml
+  discard-paths: no
 
 cache:
   paths:
