@@ -1,0 +1,9 @@
+version: 0.0
+os: windows
+files:
+  - source: /publish
+    destination: C:\CategoricallyApplication
+hooks:
+  - location: scripts/AfterInstall.ps1
+    timeout: 300
+    runas: Administrator
