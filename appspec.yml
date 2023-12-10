@@ -15,4 +15,3 @@ hooks:
   ValidateService:
     - location: scripts/ValidateService.ps1
       timeout: 300
-      runas: codedeployuser

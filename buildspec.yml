@@ -26,6 +26,7 @@ artifacts:
   files:
     - ./publish/**
     - appspec.yml
+    - ./scripts/**
   discard-paths: yes
 
 cache:
