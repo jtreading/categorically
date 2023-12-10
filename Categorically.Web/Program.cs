@@ -6,7 +6,7 @@ using Radzen;
 
 
 var builder = WebApplication.CreateBuilder(args);
-builder.WebHost.UseWebRoot("wwwroot").UseStaticWebAssets();
+builder.WebHost.UseStaticWebAssets();
 
 #region Dependency Injection
 builder.Services.AddRazorPages();
