@@ -6,7 +6,7 @@ phases:
       - echo "Installing .NET Core SDK"
       - wget https://dot.net/v1/dotnet-install.sh
       - chmod +x dotnet-install.sh
-      - ./dotnet-install.sh --version 3.1.407 --install-dir $HOME/.dotnet
+      - ./dotnet-install.sh --version 6.0.100 --install-dir $HOME/.dotnet
       - export PATH="$HOME/.dotnet:$PATH"
       - dotnet --version
 
