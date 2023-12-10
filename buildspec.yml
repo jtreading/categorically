@@ -1,3 +1,33 @@
-commands:
-    – dotnet restore
-    – dotnet publish –no-restore -c Release
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo "Installing .NET Core SDK"
+      - wget https://dot.net/v1/dotnet-install.sh
+      - chmod +x dotnet-install.sh
+      - ./dotnet-install.sh --version 3.1.407 --install-dir $HOME/.dotnet
+      - export PATH="$HOME/.dotnet:$PATH"
+      - dotnet --version
+
+  build:
+    commands:
+      - echo "Restoring dependencies"
+      - dotnet restore
+      - echo "Building the Blazor application"
+      - dotnet build -c Release
+
+  post_build:
+    commands:
+      - echo "Publishing the Blazor application"
+      - dotnet publish -c Release -o ./publish
+
+artifacts:
+  files: ./publish/**
+  discard-paths: yes
+
+cache:
+  paths:
+    - '/root/.nuget/**/*'
+    - './src/**/bin/Release/**/*'
+    - './src/**/obj/Release/**/*'
