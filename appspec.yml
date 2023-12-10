@@ -5,13 +5,13 @@ files:
       destination: C:\CategoricallyApp
 hooks:
   BeforeInstall:
-    - location: scripts/BeforeInstall.ps1
+    - location: /BeforeInstall.ps1
   AfterInstall:
-    - location: scripts/AfterInstall.ps1
+    - location: /AfterInstall.ps1
       timeout: 300
   ApplicationStart:
-    - location: scripts/ApplicationStart.ps1
+    - location: /ApplicationStart.ps1
       timeout: 300
   ValidateService:
-    - location: scripts/ValidateService.ps1
+    - location: /ValidateService.ps1
       timeout: 300
