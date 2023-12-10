@@ -1,4 +1,5 @@
 using Categorically.DataAccess;
+using Categorically.DataSeeders;
 using Categorically.Services;
 using Categorically.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -28,15 +29,10 @@ builder.Services.AddScoped<TooltipService>();
 builder.Services.AddScoped<ContextMenuService>();
 #endregion
 
-#region Connection String
-var myConn = "mytestconn";
-#if DEMO
-myConn = "myconn";
-#endif
-
+#region Connection
 var configuration = builder.Configuration;
 builder.Services.AddDbContext<AppDBContext>(options =>
-    options.UseLazyLoadingProxies().UseSqlServer(configuration.GetConnectionString(myConn)));
+    options.UseLazyLoadingProxies().UseSqlServer(configuration.GetConnectionString("myconn")));
 #endregion
 
 var app = builder.Build();
@@ -55,7 +51,7 @@ app.UseRouting();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
-#if DEBUG // SEED DATABASE
+#if RELEASE // SEED DATABASE
 using var scope = app.Services.CreateScope();
 var dbContext = scope.ServiceProvider.GetRequiredService<AppDBContext>();
 var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();

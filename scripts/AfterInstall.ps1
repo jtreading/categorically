@@ -5,4 +5,4 @@ Write-Host "AfterInstall started."
 cd C:/CategoricallyApp
 
 # Start the Blazor application
-Start-Process "dotnet" -ArgumentList "Categorically.Web.dll" -NoNewWindow -Wait
+Start-Process "dotnet" -ArgumentList "/publish/Categorically.Web.dll" -NoNewWindow -Wait
