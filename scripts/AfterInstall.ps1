@@ -1,7 +1,7 @@
 # scripts/AfterInstall.ps1
 
 # Navigate to the installation directory
-cd C:\CategoricallyApplication
+cd C:\app
 
 # Start the Blazor application
-Start-Process "dotnet" -ArgumentList "Categorically.dll" -NoNewWindow -Wait
+Start-Process "dotnet" -ArgumentList "Categorically.Web.dll" -NoNewWindow -Wait
